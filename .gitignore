@@ -1,0 +1,47 @@
+# Ignore the WordPress core files (optional)
+wp-admin/
+wp-includes/
+
+# Ignore the uploads folder (usually contains user-generated content)
+wp-content/uploads/
+
+# Ignore WordPress configuration files (if you store them separately or use environment-specific files)
+wp-config.php
+
+# Ignore the wp-content/cache directory (if using a caching plugin)
+wp-content/cache/
+
+# Ignore the backup files from plugins like UpdraftPlus or other backup plugins
+wp-content/backups/
+wp-content/backup-*/
+
+# Ignore debug log files
+debug.log
+
+# Ignore log files and temporary files
+*.log
+*.tmp
+
+# Ignore compiled code (from plugins or themes using build tools)
+node_modules/
+vendor/
+composer.lock
+package-lock.json
+
+# Ignore OS-specific hidden files
+.DS_Store
+Thumbs.db
+
+# Ignore PHPStorm project files
+.idea/
+
+# Ignore SFTP config files
+.ssh/
+
+# Ignore .htaccess file (optional, if managed separately)
+.htaccess
+
+# Ignore any Git directory within plugins or themes (if you have submodules or external repositories)
+wp-content/plugins/*/.git/
+wp-content/themes/*/.git/
+.vscode/
