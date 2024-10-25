@@ -1,47 +1,51 @@
-# Ignore the WordPress core files (optional)
-wp-admin/
-wp-includes/
+# Wordpress - ignore core, configuration, examples, uploads and logs.
+# https://github.com/github/gitignore/blob/main/WordPress.gitignore
 
-# Ignore the uploads folder (usually contains user-generated content)
-wp-content/uploads/
+# Core
+#
+# Note: if you want to stage/commit WP core files
+# you can delete this whole section/until Configuration.
+/wp-admin/
+/wp-content/index.php
+/wp-content/languages
+/wp-content/plugins/index.php
+/wp-content/themes/index.php
+/wp-includes/
+/index.php
+/license.txt
+/readme.html
+/wp-*.php
+/xmlrpc.php
 
-# Ignore WordPress configuration files (if you store them separately or use environment-specific files)
+# Configuration
 wp-config.php
 
-# Ignore the wp-content/cache directory (if using a caching plugin)
-wp-content/cache/
+# Example themes
+/wp-content/themes/twenty*/
 
-# Ignore the backup files from plugins like UpdraftPlus or other backup plugins
-wp-content/backups/
-wp-content/backup-*/
+# Example plugin
+/wp-content/plugins/hello.php
 
-# Ignore debug log files
-debug.log
+# Uploads
+/wp-content/uploads/
 
-# Ignore log files and temporary files
+# Log files
 *.log
-*.tmp
 
-# Ignore compiled code (from plugins or themes using build tools)
-node_modules/
-vendor/
-composer.lock
-package-lock.json
+# htaccess
+/.htaccess
 
-# Ignore OS-specific hidden files
-.DS_Store
-Thumbs.db
+# All plugins
+#
+# Note: If you wish to whitelist plugins,
+# uncomment the next line
+#/wp-content/plugins
 
-# Ignore PHPStorm project files
-.idea/
+# All themes
+#
+# Note: If you wish to whitelist themes,
+# uncomment the next line
+#/wp-content/themes
 
-# Ignore SFTP config files
-.ssh/
-
-# Ignore .htaccess file (optional, if managed separately)
-.htaccess
-
-# Ignore any Git directory within plugins or themes (if you have submodules or external repositories)
-wp-content/plugins/*/.git/
-wp-content/themes/*/.git/
-.vscode/
+.vscode
+wp-content/.vscode/launch.json
