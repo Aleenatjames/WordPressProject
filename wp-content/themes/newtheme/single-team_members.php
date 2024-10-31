@@ -1,6 +1,8 @@
 <?php
 
 $locations = get_field('locations');
+
+$related_post=get_field('related_post');
 get_header();
 ?>
 
@@ -15,6 +17,14 @@ get_header();
             <?php the_field('address');?>
            
         <?php wp_reset_postdata(); endforeach; ?>
+
+<BR><BR>
+        <?php if($related_post):?>
+           <?php foreach($related_post as $post): ?>
+
+            <a href="<?php echo get_the_permalink($post->ID)?>"><?php echo $post->post_title;?></a>
+            <?php endforeach; ?>
+            <?php endif;?>
 
     </div>
     

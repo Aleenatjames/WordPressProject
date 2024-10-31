@@ -94,4 +94,15 @@ function team_members(){
     register_post_type('team_members',$args);
 }
 add_action('init','team_members');
+
+define( 'MY_PLUGIN_DIR_PATH', untrailingslashit( plugin_dir_path( __FILE__ ) ) );
+add_filter('acf/settings/save_json', 'my_acf_json_save_point');
+function my_acf_json_save_point($path) {
+    $path = get_stylesheet_directory() . '/acf-json';
+    return $path;
+}
+
+    
+
+
 ?>
