@@ -1,0 +1,21 @@
+/*
+Theme Name:Test Theme
+Author:Mr Digital
+*/
+
+body{
+    background: #e7e7e7;
+}
+
+header{
+    background:#32313b;
+    width: 100%;
+    height: 100px !important;
+}
+header .top-bar{
+    list-style-type: none ;
+    margin: 0%;
+    padding: 0%;
+    display: flex !important;
+
+}
