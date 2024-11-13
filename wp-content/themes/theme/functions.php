@@ -42,6 +42,7 @@ function load_js(){
 add_action("wp_enqueue_scripts",'load_js');
 
 add_theme_support('menus');
+add_theme_support('widgets');
 add_theme_support('post-thumbnails');
 
 register_nav_menus(
@@ -115,5 +116,62 @@ function create_food_tags_taxonomy() {
     );
 }
 add_action('init', 'create_food_tags_taxonomy');
+
+function create_testimonial_post_type() {
+    register_post_type('testimonial',
+        array(
+            'labels' => array(
+                'name' => __('Testimonials'),
+                'singular_name' => __('Testimonial'),
+                'add_new_item' => __('Add New Testimonial'),
+                'edit_item' => __('Edit Testimonial')
+            ),
+            'public' => true,
+            'has_archive' => true,
+            'rewrite' => array('slug' => 'testimonials'),
+            'supports' => array('title', 'editor', 'thumbnail'),
+            'menu_icon' => 'dashicons-testimonial',
+        )
+    );
+}
+add_action('init', 'create_testimonial_post_type');
+
+function create_blog_post_type() {
+    register_post_type('blog',
+        array(
+            'labels' => array(
+                'name' => __('Blog'),
+                'singular_name' => __('Blog'),
+                'add_new_item' => __('Add New Blog'),
+                'edit_item' => __('Edit Blog')
+            ),
+            'public' => true,
+            'has_archive' => true,
+            'rewrite' => array('slug' => 'blogs'),
+            'supports' => array('title', 'editor', 'thumbnail'),
+            'menu_icon' => 'dashicons-welcome-write-blog',
+        )
+    );
+}
+add_action('init', 'create_blog_post_type');
+function change_post_labels_to_news($labels) {
+    if ($labels->name == 'Posts') {
+        $labels->name = 'News';
+        $labels->singular_name = 'News';
+        $labels->add_new = 'Add New News';
+        $labels->add_new_item = 'Add New News Item';
+        $labels->edit_item = 'Edit News Item';
+        $labels->new_item = 'New News Item';
+        $labels->view_item = 'View News Item';
+        $labels->all_items = 'All News';
+        $labels->search_items = 'Search News';
+        $labels->not_found = 'No news found';
+        $labels->not_found_in_trash = 'No news found in Trash';
+        $labels->menu_name = 'News';
+    }
+    return $labels;
+}
+
+add_filter('post_type_labels_post', 'change_post_labels_to_news');
 
 ?>

@@ -48,112 +48,79 @@
 
 
 <section class="story-area bg-seller color-white pos-relative">
-        <div class="pos-bottom triangle-up"></div>
-        <div class="pos-top triangle-bottom"></div>
-        <div class="container">
-                <div class="heading">
-                        <img class="heading-img" src="<?php bloginfo('template_directory'); ?>/images/heading_logo.png" alt="">
-                        <h2>What Clients Say</h2>
-                </div>
+    <div class="pos-bottom triangle-up"></div>
+    <div class="pos-top triangle-bottom"></div>
+    <div class="container">
+        <div class="heading">
+            <img class="heading-img" src="<?php echo get_template_directory_uri(); ?>/images/heading_logo.png" alt="">
+            <h2>What Clients Say</h2>
+        </div>
 
-                <div class="swiper-container" data-slide-effect="slide" data-autoheight="false" data-swiper-speed="500" data-swiper-margin="25" data-swiper-slides-per-view="3"
-                     data-swiper-breakpoints="true" data-scrollbar="true" data-swiper-loop="true" data-swpr-responsive="[1, 2, 2, 2]">
+        <?php
+        // Query for testimonials
+        $testimonial_query = new WP_Query([
+            'post_type' => 'testimonial',
+            'posts_per_page' => -1,
+        ]);
 
-                        <div class="swiper-wrapper pb-90 pb-sm-60 left-text center-sm-text">
-                                <div class="swiper-slide">
-                                        <h4>Amazing Pizza</h4>
-                                        <p class="color-ash mb-50 mb-sm-30 mt-20">Etiam nec odio vestibulum est mattis
-                                                efficiturut magna.Pellentesquesit amet tellus blandit. Etiam nec odio
-                                                vestibulum est mattis
-                                                effic iturut magna. Pellentesque sit am et tellus blandit. Etiamnec odio
-                                                vestibul. </p>
-                                        <img class="circle-60 mb-20 " src="<?php bloginfo('template_directory'); ?>/images/quoto-1-200x200.jpg" alt="">
-                                        <h6><b class="color-primary">Daiane Smith</b>,<b class="color-ash">Customer</b>
-                                        </h6>
-                                </div><!-- swiper-slide -->
+        if ($testimonial_query->have_posts()): ?>
+            <div class="swiper-container" data-slide-effect="slide" data-autoheight="false" data-swiper-speed="500" data-swiper-margin="25" data-swiper-slides-per-view="3" data-swiper-breakpoints="true" data-scrollbar="true" data-swiper-loop="true" data-swpr-responsive="[1, 2, 2, 2]">
+                
+                <div class="swiper-wrapper pb-90 pb-sm-60 left-text center-sm-text">
+                    <?php while ($testimonial_query->have_posts()): $testimonial_query->the_post(); ?>
+                        <?php
+                        $client_name = get_field('client_name');
+                        $client_role = get_field('client_role');
+                        ?>
+                        <div class="swiper-slide">
+                            <h4><?php the_title(); ?></h4>
+                            <div class="color-ash mb-50 mb-sm-30 mt-20"><?php the_content(); ?></div>
 
-                                <div class="swiper-slide">
-                                        <h4>Amazing Pizza</h4>
-                                        <p class="color-ash mb-50 mb-sm-30 mt-20">Etiam nec odio vestibulum est mattis
-                                                efficiturut magna.Pellentesquesit amet tellus blandit. Etiam nec
-                                                odio vestibulum est mattis
-                                                effic iturut magna. Pellentesque sit am et tellus blandit.
-                                                Etiamnec odio vestibul. </p>
-                                        <img class="circle-60 mb-20" src="<?php bloginfo('template_directory'); ?>/images/quoto-2-200x200.jpg" alt="">
-                                        <h6><b class="color-primary">Daiane Smith</b>,<b class="color-ash">Customer</b>
-                                        </h6>
-                                </div><!-- swiper-slide -->
 
-                                <div class="swiper-slide">
-                                        <h4>The best pastas in town</h4>
-                                        <p class="color-ash mb-50 mb-sm-30 mt-20">Nec odio vestibulum est mattis
-                                                effic iturut
-                                                magna. Pellentesque sit am et tellus blandit.
-                                                Etiam nec odio vestibul. Etiam nec odio vestibulum est mat tis effic
-                                                iturut magna. Pellentesque sit amet tellus blandit. Etiam nec odio. </p>
-                                        <img class="circle-60 mb-20" src="<?php bloginfo('template_directory'); ?>/images/quoto-3-200x200.jpg"
-                                             alt="">
-                                        <h6><b class="color-primary">Michael Williams</b>,<b
-                                                class="color-ash">Customer</b></h6>
-                                </div><!-- swiper-slide -->
+                            <?php if (has_post_thumbnail()): ?>
+                                <img class="circle-60 mb-20" src="<?php the_post_thumbnail_url('thumbnail'); ?>" alt="<?php the_title(); ?>">
+                            <?php else: ?>
+                                <img class="circle-60 mb-20" src="<?php echo get_template_directory_uri(); ?>/images/default-avatar.jpg" alt="Default Image">
+                            <?php endif; ?>
+                            
+                            <h6><b class="color-primary"><?php echo esc_html($client_name); ?></b>, <b class="color-ash"><?php echo esc_html($client_role); ?></b></h6>
+                        </div><!-- swiper-slide -->
+                    <?php endwhile; ?>
+                </div><!-- swiper-wrapper -->
 
-                                <div class="swiper-slide">
-                                        <h4>We love it there</h4>
-                                        <p class="color-ash mb-50 mb-sm-30 mt-20">Retiam nec odio vestibulum est
-                                                mattis effic iturut magna. Pellentesque sit amet tellus blandit. Etiam nec odio vestibulum est
-                                                mattis effic iturut magna. Pellentesque sit am et tellus blandit. Etiam nec odio vestibul. </p>
-                                        <img class="circle-60 mb-20"
-                                             src="<?php bloginfo('template_directory'); ?>/images/quoto-1-200x200.jpg" alt="">
-                                        <h6><b class="color-primary">Shawn Gaines</b>,<b class="color-ash">Customer</b>
-                                        </h6>
-                                </div><!-- swiper-slide -->
-                        </div><!-- swiper-wrapper -->
-
-                        <div class="swiper-pagination"></div>
-                </div><!-- swiper-container -->
-        </div><!-- container -->
+                <div class="swiper-pagination"></div>
+            </div><!-- swiper-container -->
+        <?php else: ?>
+            <p>No testimonials available.</p>
+        <?php endif; wp_reset_postdata(); ?>
+    </div><!-- container -->
 </section>
 
+
 <section class="counter-section section center-text" id="counter">
-        <div class="container">
-                <div class="row">
-                        <div class="col-sm-6 col-md-3">
-                                <div class="mb-30 ">
-                                        <i class="mlr-auto mb-30  icon-gradient icon-pizza"></i>
-                                        <h2><b><span class="counter-value" data-duration="400" data-count="574">0</span></b>
-                                        </h2>
-                                        <h5 class="semi-black"><b>Pizza per day</b></h5>
-                                </div><!-- margin-b-30 -->
-                        </div><!-- col-md-3-->
-
-                        <div class="col-sm-6 col-md-3">
-                                <div class="mb-30">
-                                        <i class="mlr-auto mb-30 icon-gradient icon-sea-food"></i>
-                                        <h2><b><span class="counter-value" data-duration="1400" data-count="14">0</span></b>
-                                        </h2>
-                                        <h5 class="semi-black"><b>Sea Food Dshes</b></h5>
-                                </div><!-- margin-b-30 -->
-                        </div><!-- col-md-3-->
-
-                        <div class="col-sm-6 col-md-3">
-                                <div class="mb-30">
-                                        <i class="mlr-auto mb-30 icon-gradient icon-pasta"></i>
-                                        <h2><b><span class="counter-value" data-duration="300"
-                                                     data-count="3">0</span></b></h2>
-                                        <h5 class="semi-black"><b>Pasta Chefs</b></h5>
-                                </div><!-- margin-b-30 -->
-                        </div><!-- col-md-3-->
-
-                        <div class="col-sm-6 col-md-3">
-                                <div class="mb-30">
-                                        <i class="mlr-auto mb-30 icon-gradient icon-salad"></i>
-                                        <h2><b><span class="counter-value" data-duration="1000" data-count="52">0</span></b>
-                                        </h2>
-                                        <h5 class="semi-black"><b>Salads per day</b></h5>
-                                </div><!-- margin-b-30 -->
-                        </div><!-- col-md-3-->
-
-                </div><!-- row-->
-        </div><!-- container-->
+    <div class="container">
+        <div class="row">
+            <?php if( have_rows('counters') ): ?>
+                <?php while( have_rows('counters') ): the_row(); 
+                    // Get subfield values
+                    $image = get_sub_field('image');
+                    $count = get_sub_field('count');
+                    $duration = get_sub_field('duration');
+                    $title = get_sub_field('title');
+                ?>
+                <div class="col-sm-6 col-md-3">
+                    <div class="mb-30">
+                        <?php if( $image ): ?>
+                            <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($title); ?>" class="mlr-auto mb-30 icon-gradient" />
+                        <?php endif; ?>
+                        <h2><b><span class="counter-value" data-duration="<?php echo esc_attr($duration); ?>" data-count="<?php echo esc_attr($count); ?>">0</span></b></h2>
+                        <h5 class="semi-black"><b><?php echo esc_html($title); ?></b></h5>
+                    </div><!-- margin-b-30 -->
+                </div><!-- col-md-3-->
+                <?php endwhile; ?>
+            <?php endif; ?>
+        </div><!-- row-->
+    </div><!-- container-->
 </section><!-- counter-section-->
+
 <?php get_footer(); ?>
