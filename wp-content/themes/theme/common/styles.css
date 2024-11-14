@@ -7351,5 +7351,30 @@ ul.icon li a{ padding: 10px;  }
         }
 
 }
-
+.offerc1{
+        position: absolute;
+        bottom: 16%;
+        font-size: 52px;
+        width: 103px;
+        line-height: 1;
+    }
+    .offerc2{
+        position: absolute;
+        bottom: 9%;
+        font-size: 11px;
+    
+    }
+    .buyimage{
+        position: absolute;
+        top: 18%;
+        left: 33%;
+        z-index: 11;
+    }
+    .latestpost li{
+        margin-top: 30px;
+    }
+    .latestpost li time{
+        color: red;
+        font-size: .95rem;
+    }
 

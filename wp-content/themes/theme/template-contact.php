@@ -41,8 +41,4 @@
 </section>
 
 
-<div class="map-area h-700x mb--30">
-        <div id="map" style="height:100%;"></div>
-</div><!-- map-area -->
-
 <?php get_footer(); ?>

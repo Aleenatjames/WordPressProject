@@ -168,10 +168,34 @@ function change_post_labels_to_news($labels) {
         $labels->not_found = 'No news found';
         $labels->not_found_in_trash = 'No news found in Trash';
         $labels->menu_name = 'News';
+        
     }
     return $labels;
 }
 
 add_filter('post_type_labels_post', 'change_post_labels_to_news');
+
+function custom_sidebar_widget_area() {
+    register_sidebar(array(
+        'name'          => __('Sidebar Area', 'your-text-domain'),
+        'id'            => 'custom-sidebar',
+        'before_widget' => '<div class="mb-50 mb-sm-30">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h5 class="left-text"><b>',
+        'after_title'   => '</b></h5>',
+    ));
+}
+add_action('widgets_init', 'custom_sidebar_widget_area');
+
+// Enable support for custom logo
+function mytheme_custom_logo_setup() {
+    add_theme_support('custom-logo', array(
+        'height'      => 100,
+        'width'       => 400,
+        'flex-height' => true,
+        'flex-width'  => true,
+    ));
+}
+add_action('after_setup_theme', 'mytheme_custom_logo_setup');
 
 ?>
