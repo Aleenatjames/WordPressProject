@@ -27,7 +27,7 @@
             // Query Food Items
             $args = array(
                 'post_type' => 'food_items',  // Custom post type
-                'posts_per_page' => 3,        // Limit to only one item
+                'posts_per_page' => 4,        // Limit to only one item
                 'title' => 'Pizza Margherita',  // Only select Pizza Margherita
             );         
                

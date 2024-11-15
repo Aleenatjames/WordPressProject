@@ -1,21 +1,27 @@
 <footer class="pb-50  pt-70 pos-relative">
         <div class="pos-top triangle-bottom"></div>
         <div class="container-fluid">
-                <a href="index.html"><img src="<?php bloginfo('template_directory');?>/images//logo-white.png" alt="Logo"></a>
-
+                <a href="index.html"> <?php if (function_exists('the_custom_logo')) {the_custom_logo();} ?></a>
+                <?php $title1=get_field('title1', 'option');
+                $address=get_field('address', 'option');
+                $title2=get_field('title2', 'option');
+                $phone=get_field('phone', 'option');
+                $title3=get_field('title3', 'option');
+                $email=get_field('email', 'option');
+                ?>
                 <div class="pt-30">
-                        <p class="underline-secondary"><b>Address:</b></p>
-                        <p>481 Creekside Lane Avila Beach, CA 93424 </p>
+                        <p class="underline-secondary"><b><?php echo $title1;?></b></p>
+                        <p><b><?php echo $address;?> </p>
                 </div>
 
                 <div class="pt-30">
-                        <p class="underline-secondary mb-10"><b>Phone:</b></p>
-                        <a href="tel:+53 345 7953 32453 ">+53 345 7953 32453 </a>
+                        <p class="underline-secondary mb-10"><b><b><?php echo $title2;?></b></p>
+                        <a href="tel:+53 345 7953 32453 "><b><?php echo $phone;?> </a>
                 </div>
 
                 <div class="pt-30">
-                        <p class="underline-secondary mb-10"><b>Email:</b></p>
-                        <a href="mailto:yourmail@gmail.com"> yourmail@gmail.com</a>
+                        <p class="underline-secondary mb-10"><b><b><?php echo $title3;?></b></p>
+                        <a href="mailto:yourmail@gmail.com"> <b><?php echo $email;?></a>
                 </div>
 
                 <ul class="icon mt-30">
