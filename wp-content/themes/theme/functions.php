@@ -33,6 +33,12 @@ function load_js(){
     wp_register_script('swiper',get_template_directory_uri() . '/plugin-frameworks/swiper.js',array(),1,1);
     wp_enqueue_script('swiper');
 
+    wp_register_script('waypoints',get_template_directory_uri() . '/plugin-frameworks/jquery.waypoints.min.js',array(),1,1);
+    wp_enqueue_script('waypoints');
+
+    wp_register_script('progressbar',get_template_directory_uri() . '/plugin-frameworks/progressbar.min.js',array(),1,1);
+    wp_enqueue_script('progressbar');
+
     wp_register_script('scripts',get_template_directory_uri() . '/common/scripts.js',array(),1,1);
     wp_enqueue_script('scripts');
 
@@ -73,45 +79,43 @@ function food_items_post(){
             'not_found_in_trash' => 'No Food Items found in Trash',
             'menu_name' => 'Food Items'
         ),
-        'hierarchical' => false, // Make it non-hierarchical (like posts)
+        'hierarchical' => false, 
         'public' => true,
-        'has_archive' => true,  // Enable archive page for this post type
-        'menu_icon' => 'dashicons-food', // Use a food icon for the post type
-        'supports' => array('title', 'editor', 'thumbnail', 'custom-fields'), // Optional, add 'editor' and 'custom-fields' for more flexibility
+        'has_archive' => true, 
+        'menu_icon' => 'dashicons-food',
+        'supports' => array('title', 'editor', 'thumbnail', 'custom-fields'), 
     );
     register_post_type('food_items', $args);
 }
 add_action('init', 'food_items_post');
 
-// Register Custom Taxonomy 'Food Categories' for Food Items
 function create_food_category_taxonomy() {
     register_taxonomy(
-        'food_category', // Taxonomy name
-        'food_items',    // Post type name (Food Items)
+        'food_category', 
+        'food_items',   
         array(
             'label' => 'Food Categories',
-            'hierarchical' => true, // Categories have a parent-child relationship
+            'hierarchical' => true, 
             'show_ui' => true,
             'show_admin_column' => true,
             'query_var' => true,
-            'rewrite' => array('slug' => 'food-category'), // URL slug for category
+            'rewrite' => array('slug' => 'food-category'), 
         )
     );
 }
 add_action('init', 'create_food_category_taxonomy');
 
-// Register Custom Taxonomy 'Food Tags' for Food Items
 function create_food_tags_taxonomy() {
     register_taxonomy(
-        'food_tags', // Taxonomy name
-        'food_items', // Post type name (Food Items)
+        'food_tags',
+        'food_items', 
         array(
             'label' => 'Food Tags',
-            'hierarchical' => false, // Tags are non-hierarchical (like post tags)
+            'hierarchical' => false,
             'show_ui' => true,
             'show_admin_column' => true,
             'query_var' => true,
-            'rewrite' => array('slug' => 'food-tag'), // URL slug for tags
+            'rewrite' => array('slug' => 'food-tag'),
         )
     );
 }

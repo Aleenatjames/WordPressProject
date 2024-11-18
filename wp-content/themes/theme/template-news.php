@@ -1,45 +1,46 @@
 <?php
 /*Template Name:News */
-?>
-<?php get_header(); ?>
 
-<section class="bg-7 h-500x main-slider pos-relative">
-    <div class="triangle-up pos-bottom"></div>
-    <div class="container h-100">
-        <div class="dplay-tbl">
-            <div class="dplay-tbl-cell center-text color-white pt-90">
-                <h5><b>THE BEST IN TOWN</b></h5>
-                <h3 class="mt-30 mb-15">Our Blog</h3>
-            </div><!-- dplay-tbl-cell -->
-        </div><!-- dplay-tbl -->
-    </div><!-- container -->
-</section>
-
+get_header();
+$main_heading = get_field('main_heading');
+if ($main_heading): ?>
+    <section class="bg-7 h-500x main-slider pos-relative">
+        <div class="triangle-up pos-bottom"></div>
+        <div class="container h-100">
+            <div class="dplay-tbl">
+                <div class="dplay-tbl-cell center-text color-white pt-90">
+                    <?php if (get_field('sub_heading')): ?>
+                        <h5><b><?php echo get_field('sub_heading') ?></b></h5>
+                    <?php endif; ?>
+                    <h3 class="mt-30 mb-15"><?php echo $main_heading ?></h3>
+                </div>
+            </div>
+        </div>
+    </section>
+<?php endif; ?>
 
 <section class="story-area left-text center-sm-text">
     <div class="container">
         <div class="row">
             <div class="col-md-7 col-lg-8">
                 <?php
-                // WP Query to fetch blog posts
+
                 $blog_posts = new WP_Query(array(
                     'post_type' => 'post',
-                    'posts_per_page' => 3, // Adjust as needed
-                    'orderby' => 'date',   // Order by date
+                    'posts_per_page' => 3,
+                    'orderby' => 'date',
                     'order' => 'ASC'
                 ));
 
                 if ($blog_posts->have_posts()) :
                     while ($blog_posts->have_posts()) : $blog_posts->the_post();
-                        // Get the ACF date field (assuming the field name is 'post_date')
-                        $post_date = get_field('date'); // Adjust 'post_date' to match your field name
+                        $post_date = get_field('date');
 
                         if ($post_date) {
-                            // Convert the date to a DateTime object
                             $date = DateTime::createFromFormat('Ymd', $post_date);
-                            $day = $date->format('d'); // Day format
-                            $month = $date->format('m'); // Month format
-                            $year = $date->format('y'); // Year format
+                            $day = $date->format('d');
+                            $month = $date->format('m');
+                            $year = $date->format('y');
                         }
                 ?>
                         <div class="mb-50 mb-sm-30">
@@ -73,22 +74,21 @@
                     <li><a href="#"><b> 02.</b></a></li>
                     <li><a href="#"><b> 03.</b></a></li>
                 </ul>
-            </div><!--col-md-8-->
+            </div>
 
 
             <div class="col-md-5 col-lg-4">
-    <div class="mx-w-400x mlr-auto">
-        
-        <?php if (is_active_sidebar('custom-sidebar')) : ?>
-            <?php dynamic_sidebar('custom-sidebar'); ?>
-        <?php else : ?>
-            <p>No widgets added to Sidebar Area.</p>
-        <?php endif; ?>
+                <div class="mx-w-400x mlr-auto">
 
-    </div><!--mx-w-400x-->
-</div>
+                    <?php if (is_active_sidebar('custom-sidebar')) : 
+                         dynamic_sidebar('custom-sidebar'); 
+                     else : ?>
+                        <p>No widgets added to Sidebar Area.</p>
+                    <?php endif; ?>
 
-        </div><!-- row -->
-    </div><!-- container -->
+                </div>
+
+            </div>
+        </div>
 </section>
 <?php get_footer(); ?>
