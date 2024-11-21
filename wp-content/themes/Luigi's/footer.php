@@ -93,9 +93,9 @@
                 </ul>
 
                 <p class="color-light font-9 mt-50 mt-sm-30">
-                        <?php echo sprintf(__('Copyright &copy; %s All rights reserved', 'your-theme-textdomain'), date('Y')); ?> |
+                        <?php echo sprintf(__('Copyright &copy; %s All rights reserved', 'Luigis'), date('Y')); ?> |
                         <?php echo sprintf(
-                                __('This template is made with %s by %s --- Downloaded from %s', 'your-theme-textdomain'),
+                                __('This template is made with %s by %s --- Downloaded from %s', 'Luigis'),
                                 '<i class="ion-heart" aria-hidden="true"></i>',
                                 '<a href="https://colorlib.com" target="_blank">Colorlib</a>',
                                 '<a href="https://themeslab.org/" target="_blank">Themeslab</a>'

@@ -7377,4 +7377,7 @@ ul.icon li a{ padding: 10px;  }
         color: red;
         font-size: .95rem;
     }
-
+    .dynamic-bg {
+        background: url('<?php echo esc_url(get_the_post_thumbnail_url()); ?>') !important;
+        background-size: cover !important;
+    }
