@@ -5,44 +5,31 @@
                                                 the_custom_logo();
                                         } ?></a>
                 <?php
-                $title1 = get_field('title1', 'option');
                 $address = get_field('address', 'option');
-                $title2 = get_field('title2', 'option');
                 $phone = get_field('phone', 'option');
-                $title3 = get_field('title3', 'option');
                 $email = get_field('email', 'option');
                 ?>
 
                 <div class="pt-30">
-                        <?php if (!empty($title1)) : ?>
-                                <p class="underline-secondary"><b><?php echo $title1; ?></b></p>
-                        <?php endif; ?>
-
+                                <p class="underline-secondary"><b><?php echo esc_html__('Address:', 'luigis'); ?></b></p>
                         <?php if (!empty($address)) : ?>
-                                <p><b><?php echo $address; ?></b></p>
+                                <p><b><?php echo esc_html($address); ?></b></p>
                         <?php endif; ?>
                 </div>
 
                 <div class="pt-30">
-                        <?php if (!empty($title2)) : ?>
-                                <p class="underline-secondary mb-10"><b><?php echo $title2; ?></b></p>
-                        <?php endif; ?>
-
+                                <p class="underline-secondary mb-10"><b><?php echo esc_html__('Phone:', 'luigis'); ?></b></p>
                         <?php if (!empty($phone)) : ?>
-                                <a href="tel:<?php echo esc_attr($phone); ?>"><b><?php echo $phone; ?></b></a>
+                                <a href="tel:<?php echo esc_attr($phone); ?>"><b><?php echo esc_html($phone); ?></b></a>
                         <?php endif; ?>
                 </div>
 
                 <div class="pt-30">
-                        <?php if (!empty($title3)) : ?>
-                                <p class="underline-secondary mb-10"><b><?php echo $title3; ?></b></p>
-                        <?php endif; ?>
-
+                                <p class="underline-secondary mb-10"><b><?php echo esc_html__('Email:', 'luigis'); ?></b></p>
                         <?php if (!empty($email)) : ?>
-                                <a href="mailto:<?php echo esc_attr($email); ?>"><b><?php echo $email; ?></b></a>
+                                <a href="mailto:<?php echo esc_attr($email); ?>"><b><?php echo esc_html($email); ?></b></a>
                         <?php endif; ?>
                 </div>
-
 
                 <ul class="icon mt-30">
                         <li><a href="#"><i class="ion-social-pinterest"></i></a></li>
