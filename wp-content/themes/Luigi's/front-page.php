@@ -2,7 +2,7 @@
 
 <?php $hero = get_field('hero');
 if (has_post_thumbnail()): ?>
-        <section class="bg-1 h-900x main-slider pos-relative dynamic-bg">
+       <section class="bg-1 h-900x main-slider pos-relative">
                 <div class="triangle-up pos-bottom"></div>
                 <div class="container h-100">
                         <div class="dplay-tbl">
