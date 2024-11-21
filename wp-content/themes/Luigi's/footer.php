@@ -1,10 +1,14 @@
-<footer class="pb-50  pt-70 pos-relative">
+<footer class="pb-50 pt-70 pos-relative">
         <div class="pos-top triangle-bottom"></div>
         <div class="container-fluid">
                 <a href="<?php echo esc_url(home_url('/')); ?>">
-                        <?php if (function_exists('the_custom_logo')) {
+                        <?php
+                        if (has_custom_logo()) {
                                 the_custom_logo();
-                        } ?>
+                        } else {
+                                echo '<a href="' . esc_url(home_url('/')) . '">Luigis</a>';
+                        }
+                        ?>
                 </a>
 
                 <?php
@@ -36,63 +40,67 @@
 
                 <ul class="icon mt-30">
                         <?php
-                        // Retrieve the entire social media links group field
                         $social_media_links = get_field('social_media_links', 'option');
                         ?>
 
-                        <?php if (!empty($social_media_links['pinterest_url']['url'])): ?>
+                        <?php if (!empty($social_media_links['pinterest_url']['url'])) : ?>
                                 <li>
                                         <a href="<?php echo esc_url($social_media_links['pinterest_url']['url']); ?>">
-                                                <i class="ion-social-pinterest"></i>
+                                                <i class="ion-social-pinterest" aria-label="Pinterest"></i>
                                         </a>
                                 </li>
                         <?php endif; ?>
 
-                        <?php if (!empty($social_media_links['facebook_url']['url'])): ?>
+                        <?php if (!empty($social_media_links['facebook_url']['url'])) : ?>
                                 <li>
                                         <a href="<?php echo esc_url($social_media_links['facebook_url']['url']); ?>">
-                                                <i class="ion-social-facebook"></i>
+                                                <i class="ion-social-facebook" aria-label="Facebook"></i>
                                         </a>
                                 </li>
                         <?php endif; ?>
 
-                        <?php if (!empty($social_media_links['twitter_url']['url'])): ?>
+                        <?php if (!empty($social_media_links['twitter_url']['url'])) : ?>
                                 <li>
                                         <a href="<?php echo esc_url($social_media_links['twitter_url']['url']); ?>">
-                                                <i class="ion-social-twitter"></i>
+                                                <i class="ion-social-twitter" aria-label="Twitter"></i>
                                         </a>
                                 </li>
                         <?php endif; ?>
 
-                        <?php if (!empty($social_media_links['dribbble_url']['url'])): ?>
+                        <?php if (!empty($social_media_links['dribbble_url']['url'])) : ?>
                                 <li>
                                         <a href="<?php echo esc_url($social_media_links['dribbble_url']['url']); ?>">
-                                                <i class="ion-social-dribbble-outline"></i>
+                                                <i class="ion-social-dribbble-outline" aria-label="Dribbble"></i>
                                         </a>
                                 </li>
                         <?php endif; ?>
 
-                        <?php if (!empty($social_media_links['linkedin_url']['url'])): ?>
+                        <?php if (!empty($social_media_links['linkedin_url']['url'])) : ?>
                                 <li>
                                         <a href="<?php echo esc_url($social_media_links['linkedin_url']['url']); ?>">
-                                                <i class="ion-social-linkedin"></i>
+                                                <i class="ion-social-linkedin" aria-label="LinkedIn"></i>
                                         </a>
                                 </li>
                         <?php endif; ?>
 
-                        <?php if (!empty($social_media_links['vimeo_url']['url'])): ?>
+                        <?php if (!empty($social_media_links['vimeo_url']['url'])) : ?>
                                 <li>
                                         <a href="<?php echo esc_url($social_media_links['vimeo_url']['url']); ?>">
-                                                <i class="ion-social-vimeo"></i>
+                                                <i class="ion-social-vimeo" aria-label="Vimeo"></i>
                                         </a>
                                 </li>
                         <?php endif; ?>
                 </ul>
 
                 <p class="color-light font-9 mt-50 mt-sm-30">
-                        Copyright &copy;<script>
-                                document.write(new Date().getFullYear());
-                        </script> All rights reserved | This template is made with <i class="ion-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib --- Downloaded from <a href="https://themeslab.org/" target="_blank">Themeslab</a></a></p>
+                        <?php echo sprintf(__('Copyright &copy; %s All rights reserved', 'your-theme-textdomain'), date('Y')); ?> |
+                        <?php echo sprintf(
+                                __('This template is made with %s by %s --- Downloaded from %s', 'your-theme-textdomain'),
+                                '<i class="ion-heart" aria-hidden="true"></i>',
+                                '<a href="https://colorlib.com" target="_blank">Colorlib</a>',
+                                '<a href="https://themeslab.org/" target="_blank">Themeslab</a>'
+                        ); ?>
+                </p>
         </div>
 </footer>
 
