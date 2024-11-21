@@ -9,6 +9,7 @@
 
         <!-- Font -->
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
         <?php wp_head(); ?>
 
 </head>
