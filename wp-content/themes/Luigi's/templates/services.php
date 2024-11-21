@@ -1,18 +1,18 @@
 <?php
 /*Template Name:Services */
 
-get_header();
-$menu = get_field('menu');
-if ($menu['large_heading']): ?>
+get_header(); 
+$menu = get_field('menu'); 
+if ($menu && isset($menu['large_heading']) && $menu['large_heading']): ?>
     <section class="bg-5 h-500x main-slider pos-relative">
         <div class="triangle-up pos-bottom"></div>
         <div class="container h-100">
             <div class="dplay-tbl">
                 <div class="dplay-tbl-cell center-text color-white pt-90">
-                    <?php if ($menu['small_heading']): ?>
-                        <h5><b><?php echo $menu['small_heading'] ?></b></h5>
+                    <?php if (isset($menu['small_heading']) && $menu['small_heading']): ?>
+                        <h5><b><?php echo esc_html($menu['small_heading']); ?></b></h5>
                     <?php endif; ?>
-                    <h2 class="mt-30 mb-15"><?php echo $menu['large_heading'] ?></h2>
+                    <h2 class="mt-30 mb-15"><?php echo esc_html($menu['large_heading']); ?></h2>
                 </div>
             </div>
         </div>
@@ -22,17 +22,17 @@ if ($menu['large_heading']): ?>
 <section class="story-area left-text center-sm-text">
     <div class="container">
         <div class="heading">
-            <?php $pizza = get_field('pizza');
+            <?php 
+            $pizza = get_field('pizza'); 
             if ($pizza): ?>
-                <h3><?php echo $pizza ?></h3>
-            <?php endif ?>
+                <h3><?php echo esc_html($pizza); ?></h3>
+            <?php endif; ?>
         </div>
         <div class="row">
             <?php
             $args = array(
                 'post_type' => 'food_items',
                 'posts_per_page' => 4,
-                'title' => 'Pizza Margherita',
                 'order' => 'ASC',
             );
             $query = new WP_Query($args);
@@ -44,7 +44,7 @@ if ($menu['large_heading']): ?>
             ?>
                     <div class="col-lg-3 col-md-4 col-sm-6">
                         <div class="center-text mb-30">
-                            <div class="ïmg-200x mlr-auto pos-relative">
+                            <div class="img-200x mlr-auto pos-relative">
                                 <?php
                                 if (has_term('offer', 'food_tags')) : ?>
                                     <h6 class="ribbon-cont color-white">
@@ -59,13 +59,11 @@ if ($menu['large_heading']): ?>
                                 <?php if ($image) : ?>
                                     <img src="<?php echo esc_url($image['url']); ?>" alt="<?php the_title(); ?>">
                                 <?php else : ?>
-                                    <img src="<?php bloginfo('template_directory'); ?>/images/default-food.png" alt="Food Image">
+                                    <img src="<?php echo esc_url(get_template_directory_uri() . '/images/default-food.png'); ?>" alt="Food Image">
                                 <?php endif; ?>
                             </div>
                             <h5 class="mt-20"><?php the_title(); ?></h5>
-                            <h4 class="mt-5 color-primary"><b>$<?php echo get_post_meta(get_the_ID(), 'price', true); ?></b></h4>
-
-
+                            <h4 class="mt-5 color-primary"><b>$<?php echo esc_html(get_post_meta(get_the_ID(), 'price', true)); ?></b></h4>
                         </div>
                     </div>
             <?php
@@ -79,6 +77,7 @@ if ($menu['large_heading']): ?>
         </div>
     </div>
 </section>
+
 
 <section class="bg-lite-blue">
     <div class="container">
@@ -98,13 +97,14 @@ if ($menu['large_heading']): ?>
                         <div class="sided-90x mb-30">
                             <div class="s-left">
                                 <?php if ($image) : ?>
-                                    <img class="br-3" src="<?php echo esc_url($image['url']); ?>" alt="<?php the_title(); ?>">
+                                    <img class="br-3" src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr(get_the_title()); ?>">
                                 <?php else : ?>
-                                    <img class="br-3" src="<?php bloginfo('template_directory'); ?>/images/default-image.jpg" alt="Menu Image">
+                                    <img class="br-3" src="<?php echo esc_url(get_template_directory_uri() . '/images/default-image.jpg'); ?>" alt="Menu Image">
                                 <?php endif; ?>
                             </div>
                             <div class="s-right">
-                                <h5 class="mb-10"><b><?php the_title(); ?></b>
+                                <h5 class="mb-10">
+                                    <b><?php the_title(); ?></b>
                                     <b class="color-primary float-right">$<?php echo esc_html($price); ?></b>
                                 </h5>
                                 <p class="pr-70"><?php the_content(); ?></p>
@@ -121,23 +121,33 @@ if ($menu['large_heading']): ?>
         </div>
     </div>
 </section>
+
 <section class="story-area bg-seller color-white pos-relative">
     <div class="pos-bottom triangle-up"></div>
     <div class="pos-top triangle-bottom"></div>
     <div class="container">
-        <?php $banner = get_field('banner'); ?>
-        <h4 class="font-30 font-sm-20  center-text mb-25"><?php echo $banner['banner1'] ?> <b><?php echo $banner['banner2'] ?></b> <?php echo $banner['banner3'] ?></h4>
+        <?php 
+        $banner = get_field('banner'); 
+        if ($banner): ?>
+            <h4 class="font-30 font-sm-20 center-text mb-25">
+                <?php echo esc_html($banner['banner1']); ?> 
+                <b><?php echo esc_html($banner['banner2']); ?></b> 
+                <?php echo esc_html($banner['banner3']); ?>
+            </h4>
+        <?php endif; ?>
     </div>
 </section>
 
 <section>
     <div class="container">
         <div class="heading mb-sm-10">
-            <?php $pasta = get_field('pasta');
+            <?php 
+            $pasta = get_field('pasta');
             if ($pasta): ?>
-                <h3><?php echo $pasta ?></h3>
-            <?php endif ?>
+                <h3><?php echo esc_html($pasta); ?></h3>
+            <?php endif; ?>
         </div>
+
         <div class="row">
             <?php
             $pasta_query = new WP_Query(array(
@@ -155,7 +165,7 @@ if ($menu['large_heading']): ?>
             if ($pasta_query->have_posts()) :
                 while ($pasta_query->have_posts()) : $pasta_query->the_post();
                     $image = get_field('image');
-                    $image_url = $image['url'];
+                    $image_url = $image['url'] ?? ''; // Default to an empty string if no image URL
             ?>
                     <div class="col-md-12 col-lg-6">
                         <div class="sided-220x responsive mb-30 left-text center-sm-text">
@@ -166,7 +176,11 @@ if ($menu['large_heading']): ?>
                             </div>
                             <div class="s-right">
                                 <h5><?php the_title(); ?></h5>
-                                <h4 class="mtb-10"><b class="color-primary">$<?php echo get_post_meta(get_the_ID(), 'price', true); ?></b></h4>
+                                <h4 class="mtb-10">
+                                    <b class="color-primary">
+                                        $<?php echo esc_html(get_post_meta(get_the_ID(), 'price', true)); ?>
+                                    </b>
+                                </h4>
                                 <p><?php the_content(); ?></p>
                             </div>
                         </div>
@@ -177,8 +191,9 @@ if ($menu['large_heading']): ?>
             endif;
             ?>
         </div>
-        <div class="brder-t-light mt-sm-10 mb-60 mb-sm-40">
-        </div>
+
+        <div class="brder-t-light mt-sm-10 mb-60 mb-sm-40"></div>
+
         <div class="row">
             <?php
             $general_query = new WP_Query(array(
@@ -189,7 +204,6 @@ if ($menu['large_heading']): ?>
                         'taxonomy' => 'food_category',
                         'field'    => 'slug',
                         'terms'    => 'pasta',
-
                     ),
                 ),
             ));
@@ -197,7 +211,7 @@ if ($menu['large_heading']): ?>
             if ($general_query->have_posts()) :
                 while ($general_query->have_posts()) : $general_query->the_post();
                     $image = get_field('image');
-                    $image_url = $image['url'];
+                    $image_url = $image['url'] ?? ''; // Default to an empty string if no image URL
             ?>
                     <div class="col-md-6">
                         <div class="sided-90x mb-30">
@@ -207,7 +221,12 @@ if ($menu['large_heading']): ?>
                                 <?php endif; ?>
                             </div>
                             <div class="s-right">
-                                <h5 class="mb-10"><b><?php the_title(); ?></b><b class="color-primary float-right">$<?php echo get_post_meta(get_the_ID(), 'price', true); ?></b></h5>
+                                <h5 class="mb-10">
+                                    <b><?php the_title(); ?></b>
+                                    <b class="color-primary float-right">
+                                        $<?php echo esc_html(get_post_meta(get_the_ID(), 'price', true)); ?>
+                                    </b>
+                                </h5>
                                 <p class="pr-70"><?php the_content(); ?></p>
                             </div>
                         </div>
@@ -220,4 +239,5 @@ if ($menu['large_heading']): ?>
         </div>
     </div>
 </section>
+
 <?php get_footer(); ?>
