@@ -58,6 +58,16 @@ register_nav_menus(
 add_image_size('product_image_large',700,700,false);
 add_image_size('product_image_small',400,400,false);
 
+// Add custom page templates
+function luigis_register_page_templates($templates) {
+    $templates['templates/about.php'] = __('About Page', 'luigis');
+    $templates['templates/contact.php'] = __('Contact Page', 'luigis');
+    $templates['templates/services.php'] = __('Service Page', 'luigis');
+    $templates['templates/news.php'] = __('News Page', 'luigis');
+    $templates['templates/elements.php'] = __('Elements Page', 'luigis');
+    return $templates;
+}
+add_filter('theme_page_templates', 'luigis_register_page_templates');
 // Register Custom Post Type 'Food Items'
 function food_items_post(){
     $args = array(

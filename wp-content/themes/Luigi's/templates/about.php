@@ -1,5 +1,5 @@
 <?php
-/*Template Name:About */
+/*Template Name:About Page*/
 ?>
 <?php get_header(); ?>
 
