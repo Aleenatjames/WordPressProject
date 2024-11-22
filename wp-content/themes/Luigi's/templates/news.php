@@ -56,7 +56,7 @@ if ($main_heading): ?>
                             </div>
                             <h4><a href="<?php the_permalink(); ?>"><b><?php the_title(); ?></b></a></h4>
                             <h6 class="mt-10 bg-lite-blue dplay-inl-block">
-                                <a class="plr-20 mtb-10" href="#"><b>By <?php the_author(); ?></b></a>
+                                <a class="plr-20 mtb-10" href="#"><b><?php echo esc_html__('BY', 'luigis'); ?> <?php the_author(); ?></b></a>
                                 <a class="plr-20 mtb-10 brder-lr-lite-black-2" href="#"><b>in </b></a>
                                 <a class="plr-20 mtb-10" href="<?php comments_link(); ?>"><b><?php comments_number('0 Comments', '1 Comment', '% Comments'); ?></b></a>
                             </h6>
@@ -91,7 +91,7 @@ if ($main_heading): ?>
                     <?php if (is_active_sidebar('custom-sidebar')) : 
                         dynamic_sidebar('custom-sidebar'); 
                     else : ?>
-                        <p>No widgets added to Sidebar Area.</p>
+                        <p><?php echo esc_html__('No Widget found', 'luigis'); ?></p>
                     <?php endif; ?>
                 </div>
             </div>

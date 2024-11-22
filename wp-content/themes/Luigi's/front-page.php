@@ -2,7 +2,7 @@
 
 <?php $hero = get_field('hero');
 if (has_post_thumbnail()): ?>
-       <section class="bg-1 h-900x main-slider pos-relative">
+        <section class="bg-1 h-900x main-slider pos-relative">
                 <div class="triangle-up pos-bottom"></div>
                 <div class="container h-100">
                         <div class="dplay-tbl">
@@ -57,7 +57,7 @@ $info = get_field('main_information'); ?>
         <div class="pos-top triangle-bottom"></div>
         <div class="container">
                 <div class="heading">
-                        <img class="heading-img" src="images/heading_logo.png" alt="">
+                        <img class="heading-img" src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/heading_logo.png'); ?>" alt="heading logo">
                         <?php $best = get_field('best') ?>
                         <h2><?php echo esc_html__('Best Sellers', 'Luigis'); ?></h2>
                 </div>
@@ -108,7 +108,7 @@ $info = get_field('main_information'); ?>
                                                                 <?php if ($image) : ?>
                                                                         <img src="<?php echo esc_url($image['url']); ?>" alt="<?php the_title_attribute(); ?>">
                                                                 <?php else : ?>
-                                                                        <img src="<?php echo esc_url(get_template_directory_uri() . '/images/default-food.png'); ?>" alt="<?php esc_attr_e('Food Image', 'luigis'); ?>">
+                                                                        <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/default-food.png'); ?>" alt="<?php esc_attr_e('Food Image', 'luigis'); ?>">
                                                                 <?php endif; ?>
                                                         </div>
                                                         <h5 class="mt-20"><?php the_title(); ?></h5>
@@ -147,7 +147,7 @@ $info = get_field('main_information'); ?>
 <section>
         <div class="container">
                 <div class="heading">
-                        <img class="heading-img" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/heading_logo.png" alt="">
+                        <img class="heading-img" src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/heading_logo.png" alt="">
                         <?php
                         $our_menu = get_field('our_menu');
                         ?>
@@ -158,7 +158,7 @@ $info = get_field('main_information'); ?>
                 <div class="row">
                         <div class="col-sm-12">
                                 <ul class="selecton brdr-b-primary mb-70">
-                                        <li><a class="active" href="#" data-select="*" onclick="filterItems('*')"><b>ALL</b></a></li>
+                                        <li><a class="active" href="#" data-select="*" onclick="filterItems('*')"><b><?php echo esc_html__('ALL', 'luigis'); ?></b></a></li>
                                         <?php
                                         $categories = get_terms([
                                                 'taxonomy' => 'food_category',
@@ -215,7 +215,7 @@ $info = get_field('main_information'); ?>
                                 endwhile;
                                 wp_reset_postdata();
                         else:
-                                echo '<p>' .esc_html__('No menu items found.', 'luigis') . '</p>';
+                                echo '<p>' . esc_html__('No menu items found.', 'luigis') . '</p>';
                         endif;
                         ?>
                 </div>

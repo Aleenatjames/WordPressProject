@@ -1,8 +1,8 @@
 <?php
 /*Template Name:Services */
 
-get_header(); 
-$menu = get_field('menu'); 
+get_header();
+$menu = get_field('menu');
 if ($menu && isset($menu['large_heading']) && $menu['large_heading']): ?>
     <section class="bg-5 h-500x main-slider pos-relative">
         <div class="triangle-up pos-bottom"></div>
@@ -22,8 +22,8 @@ if ($menu && isset($menu['large_heading']) && $menu['large_heading']): ?>
 <section class="story-area left-text center-sm-text">
     <div class="container">
         <div class="heading">
-            <?php 
-            $pizza = get_field('pizza'); 
+            <?php
+            $pizza = get_field('pizza');
             if ($pizza): ?>
                 <h3><?php echo esc_html($pizza); ?></h3>
             <?php endif; ?>
@@ -48,18 +48,18 @@ if ($menu && isset($menu['large_heading']) && $menu['large_heading']): ?>
                                 <?php
                                 if (has_term('offer', 'food_tags')) : ?>
                                     <h6 class="ribbon-cont color-white">
-                                        <div class="ribbon primary"></div><b>OFFER</b>
+                                        <div class="ribbon primary"></div><b><?php echo esc_html__('OFFER', 'luigis'); ?></b>
                                     </h6>
                                 <?php elseif (has_term('speciality', 'food_tags')) : ?>
                                     <h6 class="ribbon-cont color-white">
-                                        <div class="ribbon secondary"></div><b>SPECIALITY</b>
+                                        <div class="ribbon secondary"></div><b><?php echo esc_html__('SPECIALITY', 'luigis'); ?></b>
                                     </h6>
                                 <?php endif; ?>
 
                                 <?php if ($image) : ?>
                                     <img src="<?php echo esc_url($image['url']); ?>" alt="<?php the_title(); ?>">
                                 <?php else : ?>
-                                    <img src="<?php echo esc_url(get_template_directory_uri() . '/images/default-food.png'); ?>" alt="Food Image">
+                                    <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/default-food.png'); ?>" alt="Food Image">
                                 <?php endif; ?>
                             </div>
                             <h5 class="mt-20"><?php the_title(); ?></h5>
@@ -99,7 +99,7 @@ if ($menu && isset($menu['large_heading']) && $menu['large_heading']): ?>
                                 <?php if ($image) : ?>
                                     <img class="br-3" src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr(get_the_title()); ?>">
                                 <?php else : ?>
-                                    <img class="br-3" src="<?php echo esc_url(get_template_directory_uri() . '/images/default-image.jpg'); ?>" alt="Menu Image">
+                                    <img class="br-3" src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/food.jpg'); ?>" alt="Menu Image">
                                 <?php endif; ?>
                             </div>
                             <div class="s-right">
@@ -126,12 +126,12 @@ if ($menu && isset($menu['large_heading']) && $menu['large_heading']): ?>
     <div class="pos-bottom triangle-up"></div>
     <div class="pos-top triangle-bottom"></div>
     <div class="container">
-        <?php 
-        $banner = get_field('banner'); 
+        <?php
+        $banner = get_field('banner');
         if ($banner): ?>
             <h4 class="font-30 font-sm-20 center-text mb-25">
-                <?php echo esc_html($banner['banner1']); ?> 
-                <b><?php echo esc_html($banner['banner2']); ?></b> 
+                <?php echo esc_html($banner['banner1']); ?>
+                <b><?php echo esc_html($banner['banner2']); ?></b>
                 <?php echo esc_html($banner['banner3']); ?>
             </h4>
         <?php endif; ?>
@@ -141,7 +141,7 @@ if ($menu && isset($menu['large_heading']) && $menu['large_heading']): ?>
 <section>
     <div class="container">
         <div class="heading mb-sm-10">
-            <?php 
+            <?php
             $pasta = get_field('pasta');
             if ($pasta): ?>
                 <h3><?php echo esc_html($pasta); ?></h3>

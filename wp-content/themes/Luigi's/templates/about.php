@@ -117,7 +117,7 @@ if (!empty($menu['main_text'])): ?>
                             <?php if (has_post_thumbnail()): ?>
                                 <img class="circle-60 mb-20" src="<?php echo esc_url(get_the_post_thumbnail_url(null, 'thumbnail')); ?>" alt="<?php the_title(); ?>">
                             <?php else: ?>
-                                <img class="circle-60 mb-20" src="<?php echo esc_url(get_template_directory_uri()); ?>/images/default-avatar.jpg" alt="Default Image">
+                                <img class="circle-60 mb-20" src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/default-avatar.jpg" alt="Default Image">
                             <?php endif; ?>
 
                             <h6><b class="color-primary"><?php echo esc_html($client_name); ?></b>, <b class="color-ash"><?php echo esc_html($client_role); ?></b></h6>
